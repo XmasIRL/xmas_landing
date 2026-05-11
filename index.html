@@ -7,8 +7,9 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #013c50, #001428); color: #ffffff; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
-    .container { width: 100%; max-width: 480px; text-align: center; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #013c50, #001428); color: #ffffff; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; overflow-x: hidden; position: relative; }
+    #snow-canvas { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+    .container { width: 100%; max-width: 480px; text-align: center; position: relative; z-index: 1; }
     .links { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
     .divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 24px 0 16px; color: rgba(255,255,255,0.75); font-size: 14px; font-family: 'Segoe Script', 'Comic Sans MS', 'Brush Script MT', cursive; }
     .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.25); }
@@ -16,13 +17,15 @@
   </style>
 </head>
 <body>
+  <canvas id="snow-canvas"></canvas>
   <div class="container">
     <img src="https://avatars.githubusercontent.com/u/182743313?s=200&amp;v=4" alt="Xmas" style="width:96px;height:96px;border-radius:50%;object-fit:cover;margin-bottom:16px;border:3px solid rgba(255,255,255,0.5);" />
     <h1 style="font-size: 24px; font-weight: 700; color: #ffffff; margin-bottom: 8px;">Xmas</h1>
     <p style="font-size: 14px; color: rgba(255,255,255,0.85); margin-bottom: 8px; line-height: 1.5;"><i>Solve for X.</i></p>
     <div class="links">
+      <a href="https://github.com/XmasIRL" target="_blank" rel="noopener noreferrer" style="display: block; padding: 14px 20px; border-radius: 12px; text-decoration: none; color: #111111; font-size: 15px; font-weight: 600; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);">Code for Nerds</a>
       <a href="https://ko-fi.com/xmasirl" target="_blank" rel="noopener noreferrer" style="display: block; padding: 14px 20px; border-radius: 12px; text-decoration: none; color: #111111; font-size: 15px; font-weight: 600; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);">Buy me a coffee</a>
-      <a href="https://www.reddit.com/r/XmasCraft" target="_blank" rel="noopener noreferrer" style="display: block; padding: 14px 20px; border-radius: 12px; text-decoration: none; color: #111111; font-size: 15px; font-weight: 600; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);">Browse r/Xmascraft</a>
+      <a href="https://www.reddit.com/r/XmasCraft" target="_blank" rel="noopener noreferrer" style="display: block; padding: 14px 20px; border-radius: 12px; text-decoration: none; color: #111111; font-size: 15px; font-weight: 600; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);">Explore r/Xmascraft</a>
       <a href="https://discord.gg/wBckhFsGv5" target="_blank" rel="noopener noreferrer" style="display: block; padding: 14px 20px; border-radius: 12px; text-decoration: none; color: #111111; font-size: 15px; font-weight: 600; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);">Join the Xmascraft Discord</a>
     </div>
     <div class="divider">my socials</div>
@@ -36,5 +39,58 @@
       <a href="https://bsky.app/profile/xmasirl.bsky.social" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9);text-decoration:none;display:inline-block;margin:0 6px;" title="Bluesky"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 600 530" fill="currentColor"><path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/></svg></a>
       <a href="https://www.instagram.com/xmas.irl/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9);text-decoration:none;display:inline-block;margin:0 6px;" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a></div>
   </div>
+  <script>
+    const canvas = document.getElementById('snow-canvas');
+    const ctx = canvas.getContext('2d');
+    let width = 0;
+    let height = 0;
+    const snowflakes = Array.from({ length: 90 }, () => ({
+      x: 0,
+      y: 0,
+      r: 0,
+      speed: 0,
+      angle: Math.random() * Math.PI * 2,
+      drift: Math.random() * 0.6 + 0.4,
+      color: `rgba(255,255,255,${Math.random() * 0.6 + 0.35})`
+    }));
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      snowflakes.forEach(f => {
+        f.x = Math.random() * width;
+        f.y = Math.random() * height;
+        f.r = Math.random() * 2.2 + 1.2;
+        f.speed = Math.random() * 0.9 + 0.5;
+      });
+    }
+
+    function drawSnow() {
+      ctx.clearRect(0, 0, width, height);
+      snowflakes.forEach(f => {
+        ctx.fillStyle = f.color;
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+        ctx.fill();
+        f.y += f.speed;
+        f.x += Math.sin(f.angle) * f.drift;
+        f.angle += 0.01;
+        if (f.y > height + 10) {
+          f.y = -10;
+          f.x = Math.random() * width;
+        }
+        if (f.x > width + 10) {
+          f.x = -10;
+        } else if (f.x < -10) {
+          f.x = width + 10;
+        }
+      });
+      requestAnimationFrame(drawSnow);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    drawSnow();
+  </script>
 </body>
 </html>
