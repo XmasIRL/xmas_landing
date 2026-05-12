@@ -35,12 +35,12 @@
       <a href="https://www.instagram.com/xmas.irl/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9);text-decoration:none;display:inline-block;margin:0 6px;" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
       <a href="https://www.patreon.com/XmasIRL" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9);text-decoration:none;display:inline-block;margin:0 6px;" title="Patreon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="2 -2 36 36" fill="currentColor"><path d="M20.23 1.604c-0.008-0-0.017-0-0.027-0-5.961 0-10.793 4.832-10.793 10.793s4.832 10.793 10.793 10.793c5.955 0 10.783-4.822 10.793-10.775v-0.001c-0.004-5.953-4.816-10.781-10.763-10.809h-0.003zM1.004 1.604v28.792h5.274v-28.792z"></path></svg></a>
     </div>
-    <div class="divider">stuff to do</div>
+    <div class="divider">&</div>
     <div class="links">
       <a href="https://ko-fi.com/xmasirl" target="_blank" rel="noopener noreferrer" style="width:70%; display: block; padding: 14px 20px; border-radius: 12px; text-decoration: none; color: #111111; font-size: 15px; font-weight: 600; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);">Buy me a coffee</a>
       <a href="https://www.reddit.com/r/XmasCraft" target="_blank" rel="noopener noreferrer" style="width:70%;display: block; padding: 14px 20px; border-radius: 12px; text-decoration: none; color: #111111; font-size: 15px; font-weight: 600; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);">Explore r/Xmascraft</a>
       <a href="https://discord.gg/wBckhFsGv5" target="_blank" rel="noopener noreferrer" style="width:70%;display: block; padding: 14px 20px; border-radius: 12px; text-decoration: none; color: #111111; font-size: 15px; font-weight: 600; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);">Join the Xmascraft Discord</a>
-      <a href="https://github.com/XmasIRL" target="_blank" rel="noopener noreferrer" style="width:200px; height:40px; position: absolute; margin-top: 260px; padding: 8px; border-radius: 12px; border:2px dashed #ffffff63; text-decoration: none; color: #ffffff63; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 15px; font-weight: 600; background: rgba(255,255,255,0); backdrop-filter: blur(10px);">Code for Nerds</a>
+      <a href="https://github.com/XmasIRL" target="_blank" rel="noopener noreferrer" style="width:200px; height:40px; position: absolute; margin-top: 260px; padding: 8px; border-radius: 12px; border:2px dashed #ffffff63; text-decoration: none; color: #ffffff63; font-size: 14px; font-weight: 600; background: rgba(255,255,255,0); backdrop-filter: blur(10px);">Code for Nerds</a>
     </div>
   </div>
   <script>
@@ -55,7 +55,7 @@
       speed: 0,
       angle: Math.random() * Math.PI * 2,
       drift: Math.random() * 0.6 + 0.4,
-      color: `rgba(255,255,255,${Math.random() * 0.6})`
+      color: `rgba(255,255,255,${Math.random() * 0.2})`
     }));
 
     function resizeCanvas() {
@@ -72,9 +72,9 @@
     function drawSnow() {
       ctx.clearRect(0, 0, width, height);
       snowflakes.forEach(f => {
-        const size = f.r * 1.8;
+        const size = f.r * 2.3;
         ctx.strokeStyle = f.color;
-        ctx.lineWidth = Math.max(3, 2 + (f.r * 0.6));
+        ctx.lineWidth = Math.max(3, 4.2 + (f.r * 0.6));
         ctx.beginPath();
         ctx.moveTo(f.x - size, f.y);
         ctx.lineTo(f.x + size, f.y);
