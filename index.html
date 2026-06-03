@@ -151,7 +151,7 @@
     let lastMouseUpdate = 0;
     let lastTouchUpdate = 0;
 
-    const snowflakes = Array.from({ length: 220 * (1 / (window.devicePixelRatio || 1)) }, () => ({
+    const snowflakes = Array.from({ length: 160 }, () => ({
       x: 0,
       y: 0,
       r: 0,
@@ -164,14 +164,11 @@
     }));
 
     function resizeCanvas() {
-      const dpr = window.devicePixelRatio || 1;
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-      true_width = width * dpr;
-      true_height = height * dpr;
       snowflakes.forEach(f => {
-        f.x = Math.random() * true_width;
-        f.y = Math.random() * true_height;
+        f.x = Math.random() * width;
+        f.y = Math.random() * height;
         f.r = Math.random() * 2.2 + 1.2;
         f.speed = Math.random() * 0.9 + 0.5;
         f.vx = 0;
@@ -214,23 +211,22 @@
         f.angle += 0.01;
         
         // Wrap around edges
-        if (f.y > true_height + 10) {
+        if (f.y > height + 10) {
           f.y = -10;
-          f.x = Math.random() * true_width;
+          f.x = Math.random() * width;
           f.vx = 0;
           f.vy = 0;
         }
-        if (f.x > true_width + 10) {
+        if (f.x > width + 10) {
           f.x = -10;
         } else if (f.x < -10) {
-          f.x = true_width + 10;
+          f.x = width + 10;
         }
         
         // Draw snowflake        
-        const dpr = window.devicePixelRatio || 1;
-        const size = 4.8 * dpr + f.r * 1.3;
+        const size = 4.8 + f.r * 1.3;
         ctx.strokeStyle = f.color;
-        ctx.lineWidth = Math.max(3.2, 4.8 + (f.r * 0.6 * dpr));
+        ctx.lineWidth = Math.max(3.2, 4.8 + (f.r * 0.6));
         ctx.beginPath();
         ctx.moveTo(f.x - size, f.y);
         ctx.lineTo(f.x + size, f.y);
