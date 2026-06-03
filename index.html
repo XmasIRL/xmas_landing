@@ -47,37 +47,34 @@
     }
 
     @keyframes ambient-waves {
-      0% {
-        background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-        opacity: 0.75;
-      }
-      25% {
-        background-position: 40% 60%, 20% 80%, 60% 30%, 80% 50%;
-        opacity: 0.80;
-      }
-      50% {
-        background-position: 80% 20%, 70% 40%, 30% 70%, 50% 80%;
-        opacity: 0.78;
-      }
-      75% {
-        background-position: 20% 90%, 50% 10%, 90% 60%, 10% 30%;
-        opacity: 0.82;
-      }
-      100% {
-        background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-        opacity: 0.75;
-      }
+      0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; opacity: 0.75; }
+      25% { background-position: 40% 60%, 20% 80%, 60% 30%, 80% 50%; opacity: 0.80; }
+      50% { background-position: 80% 20%, 70% 40%, 30% 70%, 50% 80%; opacity: 0.78; }
+      75% { background-position: 20% 90%, 50% 10%, 90% 60%, 10% 30%; opacity: 0.82; }
+      100% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; opacity: 0.75; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     #snow-canvas { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-    .container { width: 100%; max-width: 480px; text-align: center; position: relative; z-index: 1; }
-    .links { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; align-items: center; }
-    .cutout-link { width: 300px; min-height: 56px; display: block; position: relative; border-radius: 14px; text-decoration: none; overflow: hidden; color: transparent; font-size: 15px; font-weight: 700; letter-spacing: 0.01em; }
+    .container { width: 100%; max-width: 480px; text-align: center; position: relative; z-index: 1; animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+    .links { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; align-items: center; animation: fadeIn 0.8s ease-out forwards; opacity: 0; animation-delay: 0.1s; }
+    .cutout-link { width: 300px; min-height: 56px; display: block; position: relative; border-radius: 14px; text-decoration: none; overflow: hidden; color: transparent; font-size: 15px; font-weight: 700; letter-spacing: 0.01em; border-bottom: 7px solid #adb9be; box-shadow: 0 0 10px 0px #adb9be69;  animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+    .links .cutout-link:nth-child(1) { animation-delay: 0.1s; }
+    .links .cutout-link:nth-child(2) { animation-delay: 0.25s; }
+    .links .cutout-link:nth-child(3) { animation-delay: 0.4s; }
+    .secret-link { animation: fadeIn 0.8s ease-out forwards; opacity: 0; animation-delay: 4s; }
     .cutout-link svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
     .cutout-link .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-    .divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 24px 0 16px; color: rgba(255,255,255,0.75); font-size: 14px; font-family: 'Segoe Script', 'Comic Sans MS', 'Brush Script MT', cursive; }
+    .divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 24px 0 16px; color: rgba(255,255,255,0.75); font-size: 14px; font-family: 'Segoe Script', 'Comic Sans MS', 'Brush Script MT', cursive; animation: fadeIn 0.8s ease-out forwards; opacity: 0; animation-delay: 0.1s; }
     .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.25); }
-    .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .container img { animation: fadeIn 0.8s ease-out forwards; opacity: 0; animation-delay: 0.4s; }
+    .container h1 { animation: fadeIn 0.8s ease-out forwards; opacity: 0; animation-delay: 0.3s; }
+    .container p { animation: fadeIn 0.8s ease-out forwards; opacity: 0; animation-delay: 0.2s; }
+    .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 24px; animation: fadeIn 0.8s ease-out forwards; opacity: 0; animation-delay: 0.1s; }
   </style>
 </head>
 <body>
@@ -99,7 +96,7 @@
     </div>
     <div class="divider"><i class="fa fa-paperclip" aria-hidden="true"></i></div>
     <div class="links">
-      <a class="cutout-link" href="https://github.com/XmasIRL" target="_blank" rel="noopener noreferrer" aria-label="Gifts of Code">
+      <a class="cutout-link" href="https://github.com/XmasIRL" target="_blank" rel="noopener noreferrer" aria-label="Gifts of Code" title="Github - XmasIRL">
         <span class="sr-only">Gifts of Code</span>
         <svg viewBox="0 0 440 70" preserveAspectRatio="none" aria-hidden="true">
           <defs>
@@ -111,7 +108,7 @@
           <rect width="100%" height="100%" fill="rgba(255,255,255,0.95)" mask="url(#cutout-mask-1)" />
         </svg>
       </a>
-      <a class="cutout-link" href="https://www.reddit.com/r/XmasCraft" target="_blank" rel="noopener noreferrer" aria-label="Explore r/Xmascraft">
+      <a class="cutout-link" href="https://www.reddit.com/r/XmasCraft" target="_blank" rel="noopener noreferrer" aria-label="Explore r/Xmascraft" title="Xmascraft Subreddit">
         <span class="sr-only">Explore r/Xmascraft</span>
         <svg viewBox="0 0 440 70" preserveAspectRatio="none" aria-hidden="true">
           <defs>
@@ -123,7 +120,7 @@
           <rect width="100%" height="100%" fill="rgba(255,255,255,0.95)" mask="url(#cutout-mask-2)" />
         </svg>
       </a>
-      <a class="cutout-link" href="https://discord.gg/wBckhFsGv5" target="_blank" rel="noopener noreferrer" aria-label="Join the Xmascraft Discord">
+      <a class="cutout-link" href="https://discord.gg/wBckhFsGv5" target="_blank" rel="noopener noreferrer" aria-label="Join the Xmascraft Discord" title="Xmascraft Discord">
         <span class="sr-only">Join the Xmascraft Discord</span>
         <svg viewBox="0 0 440 70" preserveAspectRatio="none" aria-hidden="true">
           <defs>
@@ -135,7 +132,7 @@
           <rect width="100%" height="100%" fill="rgba(255,255,255,0.95)" mask="url(#cutout-mask-3)" />
         </svg>
       </a>
-      <a href="https://github.com/XmasIRL/xmas_landing" target="_blank" rel="noopener noreferrer" style="width:60px; height:40px; margin-top: 50px; padding: 8px; border-radius: 12px; border:2px dashed #ffffff63; text-decoration: none; color: #ffffffc4; font-size: 15px; font-weight: 600; background: rgba(255,255,255,0); backdrop-filter: blur(10px);">🤓</a>
+      <a class="secret-link" href="https://github.com/XmasIRL/xmas_landing" target="_blank" rel="noopener noreferrer" style="width:60px; height:40px; margin-top: 50px; padding: 8px; border-radius: 12px; border:2px dashed #ffffff63; text-decoration: none; color: #ffffffc4; font-size: 15px; font-weight: 600; background: rgba(255,255,255,0); backdrop-filter: blur(10px);">🤓</a>
     </div>
   </div>
   <script>
@@ -165,7 +162,9 @@
         drift: Math.random() * 0.6 + 0.4,
         color: `rgba(255,255,255,${Math.random() * 0.5})`,
         vx: 0,
-        vy: 0
+        vy: 0,
+        createdAt: performance.now(),
+        fadeInDelay: Math.random() * 1500
       }));
     }
 
@@ -188,6 +187,8 @@
         f.speed = Math.random() * 0.9 + 0.5;
         f.vx = 0;
         f.vy = 0;
+        f.createdAt = performance.now();
+        f.fadeInDelay = Math.random() * 1500;
       });
     }
 
@@ -199,22 +200,26 @@
 
     function drawSnow(timestamp) {
       const now = typeof timestamp === 'number' ? timestamp : performance.now();
-      const dt = Math.min(Math.max((now - lastFrameTime) / 16.6667, 0.25), 3);
+      const dt = Math.min(Math.max((now - lastFrameTime) / 16.6667, 0.001), 3);
       lastFrameTime = now;
 
       ctx.clearRect(0, 0, width, height);
-      const interactionPos = getInteractionPos();
+      const rawInteractionPos = getInteractionPos();
+      const interactionPos = {
+        x: rawInteractionPos.x + (Math.random() - 0.5) * 20,
+        y: rawInteractionPos.y + (Math.random() - 0.5) * 20
+      };
       
       snowflakes.forEach(f => {
         // Calculate distance to mouse/touch
         const dx = f.x - interactionPos.x;
         const dy = f.y - interactionPos.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        const windRadius = 120;
+        const windRadius = 90;
         
         // Apply wind force if within radius
         if (distance < windRadius && distance > 0) {
-          const force = (1 - distance / windRadius) * 1.8;
+          const force = (1 - distance / windRadius) * 1.5;
           const angle = Math.atan2(dy, dx);
           f.vx += Math.cos(angle) * force * dt;
           f.vy += Math.sin(angle) * force * dt;
@@ -235,6 +240,8 @@
           f.x = Math.random() * width;
           f.vx = 0;
           f.vy = 0;
+          f.createdAt = now;
+          f.fadeInDelay = Math.random() * 1500;
         }
         if (f.x > width + 10) {
           f.x = -10;
@@ -244,7 +251,11 @@
         
         // Draw snowflake        
         const size = 4.8 + f.r * 1.3;
-        ctx.strokeStyle = f.color;
+        const timeSinceCreated = now - f.createdAt;
+        const fadeProgress = Math.min((timeSinceCreated - f.fadeInDelay) / 600, 1);
+        const opacity = Math.max(0, fadeProgress);
+        const baseOpacity = parseFloat(f.color.match(/[\d.]+\s*\)/)[0]);
+        ctx.strokeStyle = f.color.replace(/[\d.]+\s*\)/, (baseOpacity * opacity) + ')');
         ctx.lineWidth = Math.max(3.2, 4.8 + (f.r * 0.6));
         ctx.beginPath();
         ctx.moveTo(f.x - size, f.y);
