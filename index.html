@@ -12,7 +12,63 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { height: 100%; }
     html, body { background-color: #013c50;   width: 100%;    margin: 0; padding: 0; padding-bottom: env(safe-area-inset-bottom, 16px); }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(180deg, #013c50, #001428); background-attachment: fixed; background-size: contain; color: #ffffff;  display: flex; align-items: center; justify-content: center; padding: 24px; overflow-x: hidden; position: relative; min-height: 100%;  }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(180deg, #013c50, #001428); background-size: 100% 100%;
+      animation: ambient-gradient 18s ease-in-out infinite;
+      background-attachment: fixed;
+      background-size: contain;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100%;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(45deg, rgba(255,255,255,0.12), transparent 35%),
+        linear-gradient(120deg, rgba(255,255,255,0.08), transparent 40%),
+        linear-gradient(200deg, rgba(255,255,255,0.10), transparent 45%),
+        linear-gradient(280deg, rgba(255,255,255,0.09), transparent 38%);
+      background-size: 100% 100%, 250% 250%, 280% 280%, 320% 320%;
+      opacity: 0.8;
+      animation: ambient-waves 18s ease-in-out infinite;
+    }
+
+    @keyframes ambient-gradient {
+      0%, 100% { background-position: 50% 0%; }
+      50% { background-position: 50% 100%; }
+    }
+
+    @keyframes ambient-waves {
+      0% {
+        background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+        opacity: 0.75;
+      }
+      25% {
+        background-position: 40% 60%, 20% 80%, 60% 30%, 80% 50%;
+        opacity: 0.80;
+      }
+      50% {
+        background-position: 80% 20%, 70% 40%, 30% 70%, 50% 80%;
+        opacity: 0.78;
+      }
+      75% {
+        background-position: 20% 90%, 50% 10%, 90% 60%, 10% 30%;
+        opacity: 0.82;
+      }
+      100% {
+        background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+        opacity: 0.75;
+      }
+    }
+
     #snow-canvas { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
     .container { width: 100%; max-width: 480px; text-align: center; position: relative; z-index: 1; }
     .links { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; align-items: center; }
@@ -35,7 +91,7 @@
       <a href="https://www.twitch.tv/xmasirl" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9);text-decoration:none;display:inline-block;margin:0 6px;" title="Twitch"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512" fill="currentColor"><path d="M80,32,48,112V416h96v64h64l64-64h80L464,304V32ZM416,288l-64,64H256l-64,64V352H112V80H416Z"/><rect x="320" y="143" width="48" height="129"/><rect x="208" y="143" width="48" height="129"/></svg></a>
       <a href="https://kick.com/xmasirl" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9);text-decoration:none;display:inline-block;margin:0 6px;" title="Kick"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="currentColor"><path d="M23,0H9C4,0,0,4,0,9v14c0,5,4,9,9,9h14c5,0,9-4,9-9V9C32,4,28,0,23,0z M24.2,20.1c0.9,1.1,1,2.6,0.4,3.8	c-0.6,1.3-2,2.1-3.5,2.1c-1.2,0-2.3-0.5-3-1.5L15,20.8V22c0,2.1-1.9,4-4.1,4C8.8,26,7,24.3,7,22.2V9.8C7,7.7,8.8,6,10.9,6	c2.2,0,4.1,1.9,4.1,4v1.9l3.1-4.4C18.8,6.5,20,6,21.2,6c1.5,0,2.8,0.8,3.5,2.1c0.6,1.3,0.4,2.7-0.4,3.8L21,16L24.2,20.1z"/></svg></a>
       <a href="https://tiktok.com/@xmasirl" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9);text-decoration:none;display:inline-block;margin:0 6px;" title="TikTok"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48v-7.13a8.16 8.16 0 005.58 2.2V11.3a4.85 4.85 0 01-3.58-1.52 4.83 4.83 0 01-1.25-3.09h3.45a1.56 1.56 0 00.38 0z"/></svg></a>
-      <a href="https://x.com/xmasIRL" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9);text-decoration:none;display:inline-block;margin:0 6px;" title="X / Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="https://x.com/xmasIRL" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9);text-decoration:none;display:inline-block;margin:0 6px;" title="X / Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
       <a href="https://bsky.app/profile/xmasirl.bsky.social" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9);text-decoration:none;display:inline-block;margin:0 6px;" title="Bluesky"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 600 530" fill="currentColor"><path d="m135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-0.0174-2.9357-1.1937 0.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/></svg></a>
       <a href="https://www.facebook.com/xmasIRL/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9);text-decoration:none;display:inline-block;margin:0 6px;" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="-337 273 123.5 256" fill="currentColor"><path d="M-260.9,327.8c0-10.3,9.2-14,19.5-14c10.3,0,21.3,3.2,21.3,3.2l6.6-39.2c0,0-14-4.8-47.4-4.8c-20.5,0-32.4,7.8-41.1,19.3	c-8.2,10.9-8.5,28.4-8.5,39.7v25.7H-337V396h26.5v133h49.6V396h39.3l2.9-38.3h-42.2V327.8z"/></svg></a>
       <a href="https://www.instagram.com/xmas.irl/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9);text-decoration:none;display:inline-block;margin:0 6px;" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
@@ -87,14 +143,22 @@
     const ctx = canvas.getContext('2d');
     let width = 0;
     let height = 0;
-    const snowflakes = Array.from({ length: 90 }, () => ({
+    let mouseX = 0;
+    let mouseY = 0;
+    let touchX = 0;
+    let touchY = 0;
+    let usingTouch = false;
+
+    const snowflakes = Array.from({ length: 120 }, () => ({
       x: 0,
       y: 0,
       r: 0,
       speed: 0,
       angle: Math.random() * Math.PI * 2,
       drift: Math.random() * 0.6 + 0.4,
-      color: `rgba(255,255,255,${Math.random() * 0.5})`
+      color: `rgba(255,255,255,${Math.random() * 0.5})`,
+      vx: 0,
+      vy: 0
     }));
 
     function resizeCanvas() {
@@ -105,12 +169,57 @@
         f.y = Math.random() * height;
         f.r = Math.random() * 2.2 + 1.2;
         f.speed = Math.random() * 0.9 + 0.5;
+        f.vx = 0;
+        f.vy = 0;
       });
+    }
+
+    function getInteractionPos() {
+      return usingTouch ? { x: touchX, y: touchY } : { x: mouseX, y: mouseY };
     }
 
     function drawSnow() {
       ctx.clearRect(0, 0, width, height);
+      const interactionPos = getInteractionPos();
+      
       snowflakes.forEach(f => {
+        // Calculate distance to mouse/touch
+        const dx = f.x - interactionPos.x;
+        const dy = f.y - interactionPos.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const windRadius = 100;
+        
+        // Apply wind force if within radius
+        if (distance < windRadius && distance > 0) {
+          const force = (1 - distance / windRadius) * 1.8;
+          const angle = Math.atan2(dy, dx);
+          f.vx += Math.cos(angle) * force;
+          f.vy += Math.sin(angle) * force;
+        }
+        
+        // Apply friction/damping to velocity
+        f.vx *= 0.94;
+        f.vy *= 0.94;
+        
+        // Update position with velocity and natural movement
+        f.y += f.speed + f.vy;
+        f.x += Math.sin(f.angle) * f.drift + f.vx;
+        f.angle += 0.01;
+        
+        // Wrap around edges
+        if (f.y > height + 10) {
+          f.y = -10;
+          f.x = Math.random() * width;
+          f.vx = 0;
+          f.vy = 0;
+        }
+        if (f.x > width + 10) {
+          f.x = -10;
+        } else if (f.x < -10) {
+          f.x = width + 10;
+        }
+        
+        // Draw snowflake
         const size = 3.2 + f.r * 1.3;
         ctx.strokeStyle = f.color;
         ctx.lineWidth = Math.max(3, 3.2 + (f.r * 0.6));
@@ -120,21 +229,25 @@
         ctx.moveTo(f.x, f.y - size);
         ctx.lineTo(f.x, f.y + size);
         ctx.stroke();
-        f.y += f.speed;
-        f.x += Math.sin(f.angle) * f.drift;
-        f.angle += 0.01;
-        if (f.y > height + 10) {
-          f.y = -10;
-          f.x = Math.random() * width;
-        }
-        if (f.x > width + 10) {
-          f.x = -10;
-        } else if (f.x < -10) {
-          f.x = width + 10;
-        }
       });
       requestAnimationFrame(drawSnow);
     }
+
+    // Mouse events
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      usingTouch = false;
+    });
+
+    // Touch events
+    document.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        touchX = e.touches[0].clientX;
+        touchY = e.touches[0].clientY;
+        usingTouch = true;
+      }
+    }, { passive: true });
 
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
